@@ -5,21 +5,22 @@
  */
 package connectfour;
 
+import java.util.Random;
+
 /**
  *
  * @author mirac
  */
 public class ConnectFour {
     private static char[][] gameBoard;
-   
+   char currentPlayer;
     /**
      * @param args the command line arguments
      */
     public static void main(String[] args) {
         // TODO code application logic here
         gameBoard = createBoard('b');
-        gameBoard = createBoard('y');
-        gameBoard = createBoard('r');
+        takeTurn('y');
         printBoard();
     }
     private static char[][] createBoard(char starChar){
@@ -39,5 +40,28 @@ public class ConnectFour {
            }
         System.out.println();
        }
+    }
+    private static void takeTurn(char currentPlayer){
+    
+        Random play = new Random();
+        int cols = play.nextInt(7);
+        int row = 5;
+        
+        while(true){
+        if(gameBoard[row][cols] == 'b'){
+            gameBoard[row][cols] = currentPlayer;
+            break;
+        }
+        else if(row == 0){
+            cols = play.nextInt(7);
+        }else{
+        row --;
+        }
+        }
+    }
+    }
+    private static char playGame(char[][] gameBoard){
+    
+    return 'b';
     }
 }
